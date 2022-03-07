@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { AppRoutes } from "./router";
 import { BrowserRouter } from "react-router-dom";
 import { RecoilRoot } from "recoil";
+import "./index.css";
 
 ReactDOM.render(
   <Suspense fallback={null}>
