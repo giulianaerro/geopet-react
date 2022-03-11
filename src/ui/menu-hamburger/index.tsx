@@ -31,7 +31,7 @@ export const MenuHamburger = () => {
           <a href="/mylostpets" className={`${css.ventana_content}`}>
             Mis mascotas reportadas
           </a>
-          <a href="/signup" className={`${css.ventana_content}`}>
+          <a href="/reportpet" className={`${css.ventana_content}`}>
             Reportar mascota
           </a>
           <div className="ventana_button"></div>

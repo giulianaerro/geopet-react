@@ -6,20 +6,24 @@ import { MenuHamburger } from "../../ui/menu-hamburger";
 export const Header = () => {
   return (
     <div className={css.root}>
-      <div className={css.img_icon}></div>
+      <a href="/">
+        <div className={css.img_icon}></div>
+      </a>
       <MenuHamburger />
       <div className={css.container_tabs}>
         <div className={css.tabs}>
           <a href="/signup" className={css.tab}>
             Mis datos
           </a>
-          <a href="/mylostpets" className={css.tab}>
+          <a href="/mylostpet" className={css.tab}>
             Mis mascotas reportadas
           </a>
-          <a href="/signup" className={css.tab}>
+          <a href="/reportpet" className={css.tab}>
             Reportar mascota
           </a>
-          <Button>Ingresar</Button>
+          <a href="/auth">
+            <Button>Ingresar</Button>
+          </a>
         </div>
       </div>
     </div>

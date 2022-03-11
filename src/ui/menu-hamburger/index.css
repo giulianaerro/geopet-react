@@ -80,9 +80,8 @@
 }
 
 .ventana_content {
-  padding-top: 130px;
   display: block;
-
+  margin-top: 142px;
   align-items: center;
   text-align: center;
   text-decoration: none;

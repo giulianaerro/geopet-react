@@ -28,7 +28,9 @@ export const HomeComponent = () => {
   }, [geoloc]);
 
   return pets ? (
-    <TextTitle>Mascotas perdidas cerca tuyo</TextTitle>
+    <div className={css.container__text}>
+      <TextTitle>Mascotas perdidas cerca tuyo</TextTitle>
+    </div>
   ) : (
     <div>
       <div className={css.content}>

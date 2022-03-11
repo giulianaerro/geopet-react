@@ -12,3 +12,7 @@
 .container__text_title {
   margin-bottom: 110px;
 }
+.container__text {
+  text-align: center;
+  margin-top: 55px;
+}
