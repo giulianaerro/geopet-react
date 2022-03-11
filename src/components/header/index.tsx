@@ -1,17 +1,26 @@
 import React from "react";
 import css from "./index.css";
-import { MainButton } from "../../ui/buttons";
-import { Text } from "../../ui/texts";
+import { Button } from "../../ui/buttons";
+import { MenuHamburger } from "../../ui/menu-hamburger";
 
 export const Header = () => {
   return (
     <div className={css.root}>
       <div className={css.img_icon}></div>
-      <div className={css.tabs}>
-        <Text className={css.tab}>Mis datos</Text>
-        <Text className={css.tab}>Mis mascotas reportadas</Text>
-        <Text className={css.tab}>Reportar mascota</Text>
-        <MainButton>Ingresar</MainButton>
+      <MenuHamburger />
+      <div className={css.container_tabs}>
+        <div className={css.tabs}>
+          <a href="/signup" className={css.tab}>
+            Mis datos
+          </a>
+          <a href="/mylostpets" className={css.tab}>
+            Mis mascotas reportadas
+          </a>
+          <a href="/signup" className={css.tab}>
+            Reportar mascota
+          </a>
+          <Button>Ingresar</Button>
+        </div>
       </div>
     </div>
   );

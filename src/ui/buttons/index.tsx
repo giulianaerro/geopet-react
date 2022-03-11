@@ -1,13 +1,30 @@
 import React from "react";
 import css from "./index.css";
 
-export function MainButton({ children, bgColor = null, borderOption = null }) {
+export function Button({
+  onClick = null,
+  children,
+  bgColor = null,
+  borderOption = null,
+  fontSize = null,
+}) {
   return (
     <button
-      style={{ backgroundColor: bgColor, border: borderOption }}
+      onClick={onClick}
+      style={{
+        backgroundColor: bgColor,
+        border: borderOption,
+        fontSize: fontSize,
+      }}
       className={css.button}
     >
       {children}
     </button>
+  );
+}
+
+export function MainButton({ children }) {
+  return (
+    <button className={`${css.button} ${css.button_main}`}>{children}</button>
   );
 }

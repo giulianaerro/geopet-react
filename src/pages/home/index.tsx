@@ -1,6 +1,10 @@
 import React from "react";
-import { Header } from "../../components/header";
+import { HomeComponent } from "../../components/home";
 
-export const Home = () => {
-  return <Header></Header>;
+export const HomePage = () => {
+  return (
+    <div>
+      <HomeComponent />
+    </div>
+  );
 };

@@ -1,0 +1,14 @@
+.root {
+}
+.content {
+  text-align: center;
+  padding: 55px 20px;
+}
+@media (min-width: 768px) {
+  .content {
+    padding: 80px 160px;
+  }
+}
+.container__text_title {
+  margin-bottom: 110px;
+}
