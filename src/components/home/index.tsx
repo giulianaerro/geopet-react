@@ -2,35 +2,33 @@ import React, { useEffect, useState } from "react";
 import { Button } from "../../ui/buttons";
 import { TextTitle } from "../../ui/texts";
 import css from "./index.css";
-import { getPetsAroundMe } from "../../lib/api";
-import { useNavigate } from "react-router-dom";
+import { petsAround } from "../../lib/api";
+import { PetsAround } from "./pets-around";
 
 export const HomeComponent = () => {
-  const [pets, setPets] = useState(null);
-  const [geoloc, setGeoloc] = useState(null);
-  const navigate = useNavigate();
+  const [petsAroundLocation, setPetsAroundLocation] = useState(null);
+  const [geoLocation, setGeoLocation] = useState(null);
 
   const getPosition = () => {
-    navigator.geolocation.getCurrentPosition(async (res) => {
+    navigator.geolocation.getCurrentPosition((res) => {
       const { latitude, longitude } = res.coords;
-      setGeoloc({ userLat: latitude, userLng: longitude });
+      setGeoLocation({ userLat: latitude, userLng: longitude });
     });
   };
+
   const getPets = async () => {
-    const petsAroundResponse = getPetsAroundMe(geoloc);
-    setPets(petsAroundResponse);
+    const petsAroundResponse = await (await petsAround(geoLocation)).json();
+    setPetsAroundLocation(petsAroundResponse);
   };
 
   useEffect(() => {
-    if (geoloc) {
+    if (geoLocation) {
       getPets();
     }
-  }, [geoloc]);
+  }, [geoLocation]);
 
-  return pets ? (
-    <div className={css.container__text}>
-      <TextTitle>Mascotas perdidas cerca tuyo</TextTitle>
-    </div>
+  return geoLocation ? (
+    <PetsAround petsAround={petsAroundLocation} />
   ) : (
     <div>
       <div className={css.content}>

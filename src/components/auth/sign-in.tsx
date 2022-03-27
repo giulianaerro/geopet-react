@@ -1,39 +1,44 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import { authUser } from "../../lib/api";
+
+import { signIn } from "../../lib/api";
 import { MainButton } from "../../ui/buttons";
 import { TextField } from "../../ui/text-field";
 import { TextTitle } from "../../ui/texts";
-import { SignInComponent } from "./sign-in";
+import { useTokenState } from "../../hooks";
 import css from "./index.css";
 
-export const AuthComponent = () => {
+export const SignInComponent = ({ userEmail }) => {
   const navigate = useNavigate();
 
-  const [userEmail, setUserEmail] = React.useState("");
+  const [token, setToken] = React.useState("");
+  useTokenState(token);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const email = e.target.email.value;
-    const resAuthUser = await await authUser(email);
+    const password = e.target.password.value;
+    const resAuthUser = await await signIn(userEmail, password);
 
-    if (resAuthUser) {
-      setUserEmail(email);
+    if (!resAuthUser) {
+      window.alert("contraseña incorrecta");
     } else {
-      navigate("/signup");
+      setToken(resAuthUser);
+      navigate("/");
     }
   };
 
-  return userEmail ? (
-    <SignInComponent userEmail={userEmail} />
-  ) : (
+  return (
     <div className={css.root}>
       <div className={css.container__text}>
         <TextTitle>Ingresar</TextTitle>
       </div>
       <form className={css.form} onSubmit={handleSubmit}>
         <div className={css.container__text_field}>
-          <TextField type={"email"} name={"email"} label={"EMAIL"}></TextField>
+          <TextField
+            type={"password"}
+            name={"password"}
+            label={"CONTRASEÑA"}
+          ></TextField>
         </div>
         <MainButton>Siguiente</MainButton>
       </form>

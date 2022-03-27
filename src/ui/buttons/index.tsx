@@ -23,8 +23,10 @@ export function Button({
   );
 }
 
-export function MainButton({ children }) {
+export function MainButton({ onClick = null, children }) {
   return (
-    <button className={`${css.button} ${css.button_main}`}>{children}</button>
+    <button onClick={onClick} className={`${css.button} ${css.button_main}`}>
+      {children}
+    </button>
   );
 }

@@ -1,37 +1,28 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { json } from "stream/consumers";
-import { atom, useRecoilValue, selector, useRecoilState } from "recoil";
+import {
+  atom,
+  useRecoilValue,
+  selector,
+  useRecoilState,
+  useSetRecoilState,
+} from "recoil";
+import { recoilPersist } from "recoil-persist";
 
-const queryState = atom({
-  key: "query",
+const { persistAtom } = recoilPersist();
+
+const authUser = atom({
+  key: "authUser",
   default: "",
+  effects_UNSTABLE: [persistAtom],
 });
 
-const resultsState = selector({
-  key: "searchResults",
-  get: async ({ get }) => {
-    const valorDeQuery = get(queryState);
-    if (valorDeQuery) {
-      const response = await fetch(
-        "https://api.mercadolibre.com/sites/MLA/search?q=" + valorDeQuery
-      );
-      const json = await response.json();
-      return json.results;
-    } else {
-      return [];
-    }
-  },
-});
-
-export function useSearchResult() {
-  const params = useParams();
-  const query = params.query;
-  const [value, setQueryValue] = useRecoilState(queryState);
-  const results = useRecoilValue(resultsState);
-
+export function useTokenState(token: string) {
+  const setTokenState = useSetRecoilState(authUser);
   useEffect(() => {
-    setQueryValue(query);
-  }, [query]);
-  return results;
+    setTokenState(token);
+  }, [token]);
+}
+
+export function hasAuth() {
+  return useRecoilValue(authUser);
 }
