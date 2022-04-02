@@ -6,15 +6,20 @@ import { TextField } from "../../ui/text-field";
 import { TextTitle } from "../../ui/texts";
 import { SignInComponent } from "./sign-in";
 import css from "./index.css";
+import { useUserData } from "../../hooks";
 
 export const AuthComponent = () => {
   const navigate = useNavigate();
 
   const [userEmail, setUserEmail] = React.useState("");
+  const [useData, setUseData] = React.useState("");
+
+  useUserData(useData);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
+    setUseData(email);
     const resAuthUser = await await authUser(email);
 
     if (resAuthUser) {

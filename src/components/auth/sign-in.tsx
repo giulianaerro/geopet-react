@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { signIn } from "../../lib/api";
@@ -11,7 +11,7 @@ import css from "./index.css";
 export const SignInComponent = ({ userEmail }) => {
   const navigate = useNavigate();
 
-  const [token, setToken] = React.useState("");
+  const [token, setToken] = useState("");
   useTokenState(token);
 
   const handleSubmit = async (e) => {

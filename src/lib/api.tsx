@@ -33,30 +33,15 @@ export async function signUp(
     }),
   });
   const resSignUp = await signUpRes.json();
-  const currentState = this.getState();
-  currentState.user.fullName = fullName;
-  this.setState(currentState);
+  return resSignUp;
 }
 
-export async function myInfo() {
-  const currentState = this.getState();
-  const myInfoRes = await fetch(API_BASE_URL + "/me", {
-    headers: {
-      Authorization: "bearer " + currentState.user.token,
-    },
-  });
-  const resMyInfo = await myInfoRes.json();
-  currentState.user.fullName = resMyInfo.fullName;
-  return resMyInfo;
-}
-
-export async function editMyInfo(fullName, password) {
-  const currentState = this.getState();
+export async function editMyInfo(fullName, password, { token }) {
   const editMyInfoRes = await fetch(API_BASE_URL + "/me/edit", {
     method: "put",
     headers: {
       "content-type": "application/json",
-      authorization: "bearer " + currentState.user.token,
+      authorization: "bearer " + token,
     },
     body: JSON.stringify({
       fullName,
@@ -64,7 +49,6 @@ export async function editMyInfo(fullName, password) {
     }),
   });
   const resEditMyInfo = await editMyInfoRes.json();
-  currentState.user.fullName = resEditMyInfo.fullName;
 
   return resEditMyInfo;
 }
@@ -83,17 +67,17 @@ export async function editMyInfo(fullName, password) {
 //   return resCreatePetLost;
 // }
 
-// export async function getMyPets() {
-//   const myPetsRes = await fetch(API_BASE_URL + "/me/pets", {
-//     headers: {
-//       "content-type": "application/json",
-//       authorization: "bearer " + currentState.user.token,
-//     },
-//   });
+export async function getMyPets({ token }) {
+  const myPetsRes = await fetch(API_BASE_URL + "/me/pets", {
+    headers: {
+      "content-type": "application/json",
+      authorization: "bearer " + token,
+    },
+  });
 
-//   const resMyPets = await myPetsRes.json();
-//   return resMyPets;
-// }
+  const resMyPets = await myPetsRes.json();
+  return resMyPets;
+}
 
 // export async function editPetReport(id, data) {
 //   const editPetReport = await fetch(API_BASE_URL + "/pets/edit/" + id, {

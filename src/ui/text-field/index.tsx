@@ -1,12 +1,23 @@
 import React from "react";
 import css from "./index.css";
 
-export function TextField({ type = null, name = null, label = null }) {
+export function TextField({
+  type = null,
+  name = null,
+  label = null,
+  defaultValue = null,
+}) {
   return (
     <div>
       <label className={css.label}>{label}</label>
       <br />
-      <input className={css.input} type={type} name={name} required />
+      <input
+        className={css.input}
+        type={type}
+        name={name}
+        defaultValue={defaultValue}
+        required
+      />
     </div>
   );
 }

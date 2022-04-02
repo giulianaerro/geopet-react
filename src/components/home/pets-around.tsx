@@ -20,6 +20,7 @@ export const PetsAround = ({ petsAround }) => {
           objectID={p.objectId}
           imageDataURL={p.imageDataURL}
           bio={p.bio}
+          buttonName={"Reportar"}
         ></PetCard>
       ))}
     </div>
