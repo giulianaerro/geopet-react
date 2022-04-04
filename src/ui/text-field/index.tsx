@@ -21,3 +21,13 @@ export function TextField({
     </div>
   );
 }
+
+export function TextArea({ name = null, label = null }) {
+  return (
+    <div>
+      <label className={css.label}>{label}</label>
+      <br />
+      <textarea className={css.textarea} name={name} required />
+    </div>
+  );
+}

@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { TextTitle } from "../../ui/texts";
 import css from "./pets-around.css";
 import { PetCard } from "../../ui/pet-card";
+import { ModalReport } from "../../ui/modal";
 
 export const PetsAround = ({ petsAround }) => {
   if (!petsAround) return null;
+  const [openModal, setOpenModal] = useState(false);
 
   return (
     <div>
@@ -15,13 +17,21 @@ export const PetsAround = ({ petsAround }) => {
       </TextTitle>
 
       {petsAround.map((p) => (
-        <PetCard
-          petName={p.petName}
-          objectID={p.objectId}
-          imageDataURL={p.imageDataURL}
-          bio={p.bio}
-          buttonName={"Reportar"}
-        ></PetCard>
+        <div>
+          {openModal ? (
+            <ModalReport petData={p} onClick={() => setOpenModal(false)} />
+          ) : (
+            <div>
+              <PetCard
+                petName={p.petName}
+                imageDataURL={p.imageDataURL}
+                bio={p.bio}
+                buttonName={"Reportar"}
+                onClick={() => setOpenModal(true)}
+              ></PetCard>
+            </div>
+          )}
+        </div>
       ))}
     </div>
   );

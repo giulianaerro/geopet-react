@@ -29,7 +29,6 @@ export const MyLostPetComponent = () => {
         {myLostPets.map((p) => (
           <PetCard
             petName={p.petName}
-            objectID={p.objectId}
             imageDataURL={p.imageDataURL}
             bio={p.bio}
             buttonName={"editar"}
