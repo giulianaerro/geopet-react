@@ -5,11 +5,12 @@
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
+  align-items: center;
 }
 .img_icon {
-  padding: 25px;
-  width: 25px;
-  background-color: aqua;
+  
+  width: 60px;
+ 
 }
 
 .tabs {

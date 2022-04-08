@@ -3,6 +3,7 @@ import css from "./index.css";
 import { Button } from "../../ui/buttons";
 import { MenuHamburger } from "../../ui/menu-hamburger";
 import { hasAuth } from "../../hooks";
+import geopet from "../../assets/geopet.png";
 
 export const Header = () => {
   const auth = hasAuth();
@@ -10,7 +11,7 @@ export const Header = () => {
   return (
     <div className={css.root}>
       <a href="/">
-        <div className={css.img_icon}></div>
+        <img src={geopet} className={css.img_icon}></img>
       </a>
       <MenuHamburger />
       <div className={css.container_tabs}>

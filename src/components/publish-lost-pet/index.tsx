@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { TextTitle, TextSubtitle } from "../../ui/texts";
 import css from "./index.css";
 import { TextField, TextArea } from "../../ui/text-field";
+import { useDropzone } from "react-dropzone";
+import mapboxgl from "mapbox-gl";
+
+import imgDropzone from "../../../assets/img/dropzone.png";
+import { hasAuth } from "../../hooks";
+import { useNavigate } from "react-router-dom";
 
 export const PublishLostPetComponent = () => {
+  const auth = hasAuth();
+  const navigate = useNavigate();
   return (
     <div className={css.root}>
       <div className={css.container__text}>

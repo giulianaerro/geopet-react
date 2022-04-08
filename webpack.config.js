@@ -21,12 +21,20 @@ module.exports = {
       }, {
         test: /\.css$/i,
         use: ["style-loader", { loader: "css-loader", options: { modules: true } }],
+      }, {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
       },
 
     ],
   },
   resolve: {
-    extensions: [".tsx", ".js", ".ts"],
+    extensions: [".tsx", ".js", ".ts", ".png", ".css"],
+
   },
   output: {
     path: path.resolve(__dirname, "dist"),
