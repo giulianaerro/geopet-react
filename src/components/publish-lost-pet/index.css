@@ -1,4 +1,5 @@
 .root {
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,3 +12,21 @@
 .container__input {
   margin-bottom: 40px 
 }
+
+.dropzone {
+width: 370px;
+border: 1px dashed black;
+
+} 
+
+.container__title_mapbox{
+  text-align:center
+}
+@media (min-width: 768px) {
+.container__title_mapbox{
+  padding: 20px 150px
+}}
+@media (min-width: 1024px) {
+  .container__title_mapbox{
+    padding: 20px 550px
+  }}

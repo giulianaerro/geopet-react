@@ -53,19 +53,19 @@ export async function editMyInfo(fullName, password, { token }) {
   return resEditMyInfo;
 }
 
-// export async function createPetLost(data) {
-//   const createPetLostRes = await fetch(API_BASE_URL + "/pet/lost", {
-//     method: "post",
-//     headers: {
-//       "content-type": "application/json",
-//       authorization: "bearer " + currentState.user.token,
-//     },
-//     body: JSON.stringify(data),
-//   });
-//   const resCreatePetLost = await createPetLostRes.json();
+export async function createPetLost(data, token) {
+  const createPetLostRes = await fetch(API_BASE_URL + "/pet/lost", {
+    method: "post",
+    headers: {
+      "content-type": "application/json",
+      authorization: "bearer " + token,
+    },
+    body: JSON.stringify(data),
+  });
+  const resCreatePetLost = await createPetLostRes.json();
 
-//   return resCreatePetLost;
-// }
+  return resCreatePetLost;
+}
 
 export async function getMyPets({ token }) {
   const myPetsRes = await fetch(API_BASE_URL + "/me/pets", {
