@@ -49,6 +49,7 @@ export const MyLostPetComponent = () => {
           onClick={() => setEditMyPet(p)}
           displayDeleteButton={"block"}
           handleClick={() => handleClickDetelePet(p)}
+          petPublic={true}
         ></PetCard>
       ))}
     </div>

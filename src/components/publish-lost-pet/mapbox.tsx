@@ -34,7 +34,7 @@ export function MapboxSeach() {
   }
 
   return (
-    <div className={css.container__mapbox}>
+    <div>
       <Map
         className={css.map}
         style="mapbox://styles/mapbox/streets-v11"

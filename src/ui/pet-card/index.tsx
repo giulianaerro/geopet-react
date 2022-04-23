@@ -7,6 +7,7 @@ export function PetCard({
   bio,
   petName,
   buttonName,
+  petPublic = false,
   onClick = null,
   handleClick = null,
 }) {
@@ -24,20 +25,24 @@ export function PetCard({
           <a onClick={onClick} className={css.pet__card_link}>
             {buttonName}
           </a>
-          <button
-            onClick={handleClick}
-            style={{
-              padding: "5px 10px",
-              color: "white",
-              fontFamily: "Poppins",
-              borderRadius: 10,
-              border: "5px solid var(--naranja-rojizo)",
-              backgroundColor: "var(--naranja)",
-              display: `${displayDeleteButton}`,
-            }}
-          >
-            Eliminar
-          </button>
+          {petPublic ? (
+            <button
+              onClick={handleClick}
+              style={{
+                padding: "5px 10px",
+                color: "white",
+                fontFamily: "Poppins",
+                borderRadius: 10,
+                border: "5px solid var(--naranja-rojizo)",
+                backgroundColor: "var(--naranja)",
+                display: `${displayDeleteButton}`,
+              }}
+            >
+              Eliminar
+            </button>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>
