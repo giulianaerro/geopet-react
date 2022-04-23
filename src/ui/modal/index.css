@@ -1,6 +1,7 @@
 .root{
     position: relative;
-    top: -560px;
+    top: -1119px;
+    left: 0px;
     display: flex;
     justify-content: center;
 }
