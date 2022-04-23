@@ -1,7 +1,7 @@
 .root {
-  background: #fa8f72;
+  background: var(--anaranjado);
   padding: 15px 40px;
-  box-shadow: 1px 8px 10px #f9c3b3;
+  box-shadow: 1px 8px 10px var(--anaranjado-claro);
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
@@ -21,7 +21,7 @@
   margin-right: 40px;
   font-size: 20px;
   font-weight: normal;
-  color: #000;
+  color: black;
   text-decoration: none;
 }
 

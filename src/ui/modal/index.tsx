@@ -2,20 +2,19 @@ import React, { useState } from "react";
 import { TextTitle } from "../texts";
 import css from "./index.css";
 import { TextArea, TextField } from "../text-field";
-import { MainButton } from "../buttons";
+import { Button, MainButton } from "../buttons";
 import { sendReport } from "../../lib/api";
 
-export const ModalReport = ({ petData, onClick = null }) => {
+export const ModalReport = ({ onClick = null, petValue = null }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const name = e.target.name.value;
-    const number = e.target.number.value;
-    const info = e.target.info.value;
-    const emailUser = petData.emailUser;
-    const objectID = petData.objectID;
-    const petName = petData.petName;
-
-    sendReport({ name, number, info, emailUser, objectID, petName });
+    const nameReporter = e.target.name.value;
+    const tel = e.target.number.value;
+    const petInfo = e.target.info.value;
+    const emailUser = petValue.emailUser;
+    const objectID = petValue.objectID;
+    const petName = petValue.petName;
+    sendReport({ nameReporter, petInfo, tel, emailUser, objectID, petName });
   };
 
   return (
@@ -27,9 +26,19 @@ export const ModalReport = ({ petData, onClick = null }) => {
             <TextField type={"text"} name={"name"} label={"TU NOMBRE"} />
             <TextField type={"text"} name={"number"} label={"TU TÉLEFONO"} />
             <TextArea name={"info"} label={"DONDE LO VISTE?"} />
-            <MainButton>Enviar reporte</MainButton>
+            <div className={css.container_button}>
+              <Button>Enviar</Button>
+            </div>
           </form>
-          <MainButton onClick={onClick}>Cerrar</MainButton>
+          <div className={css.container_button}>
+            <Button
+              bgColor={"var(--azul)"}
+              borderOption={"5px solid var(--azul-marino)"}
+              onClick={onClick}
+            >
+              Cerrar
+            </Button>
+          </div>
         </div>
       </div>
     </div>

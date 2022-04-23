@@ -7,6 +7,7 @@ import { ModalReport } from "../../ui/modal";
 export const PetsAround = ({ petsAround }) => {
   if (!petsAround) return null;
   const [openModal, setOpenModal] = useState(false);
+  const [valuePetCard, setValuePetCard]: any = useState(null);
 
   return (
     <div>
@@ -16,23 +17,25 @@ export const PetsAround = ({ petsAround }) => {
           : "Mascotas perdidas cerca tuyo"}
       </TextTitle>
 
-      {petsAround.map((p) => (
+      {petsAround.map((p, i) => (
         <div>
-          {openModal ? (
-            <ModalReport petData={p} onClick={() => setOpenModal(false)} />
-          ) : (
-            <div>
-              <PetCard
-                petName={p.petName}
-                imageDataURL={p.imageDataURL}
-                bio={p.bio}
-                buttonName={"Reportar"}
-                onClick={() => setOpenModal(true)}
-              ></PetCard>
-            </div>
-          )}
+          <div onClick={() => setValuePetCard(i)}>
+            <PetCard
+              petName={p.petName}
+              imageDataURL={p.imageDataURL}
+              bio={p.bio}
+              buttonName={"Reportar"}
+              onClick={() => setOpenModal(true)}
+            ></PetCard>
+          </div>
         </div>
       ))}
+      {openModal && (
+        <ModalReport
+          petValue={petsAround[valuePetCard]}
+          onClick={() => setOpenModal(false)}
+        />
+      )}
     </div>
   );
 };

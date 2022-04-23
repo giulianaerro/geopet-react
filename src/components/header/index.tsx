@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import css from "./index.css";
 import { Button } from "../../ui/buttons";
 import { MenuHamburger } from "../../ui/menu-hamburger";
-import { hasAuth } from "../../hooks";
+import { hasAuth, useTokenState } from "../../hooks";
 import geopet from "../../assets/geopet.png";
 
 export const Header = () => {
   const auth = hasAuth();
+  const [token, setToken] = useState({});
+
+  const handleClick = () => {
+    localStorage.removeItem("recoil-persist");
+  };
 
   return (
     <div className={css.root}>
@@ -27,7 +32,11 @@ export const Header = () => {
           </a>
           {auth ? (
             <a href="/">
-              <Button bgColor={"#5064a6"} borderOption={"5px solid #152b73"}>
+              <Button
+                onClick={handleClick}
+                bgColor={"var(--azul)"}
+                borderOption={"5px solid var(--azul-marino)"}
+              >
                 Cerrar sesion
               </Button>
             </a>

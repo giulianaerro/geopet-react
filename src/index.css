@@ -7,5 +7,20 @@
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
-  background-color: #f8e7e5;
+  background-color: var(--rosaseo);
+}
+
+:root {
+--rosaseo: #f8e7e5;
+
+  --azul: #5064a6;
+  --azul-marino: #152b73;
+
+  --naranja: #cf503a;
+  --naranja-rojizo: #9c3c2c;
+
+  --anaranjado: #fa8f72;
+  --anaranjado-claro: #f9c3b3;
+
+  --celeste:#51aff3;
 }

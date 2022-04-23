@@ -3,10 +3,12 @@ import css from "./index.css";
 
 export function PetCard({
   imageDataURL,
+  displayDeleteButton = null,
   bio,
   petName,
   buttonName,
   onClick = null,
+  handleClick = null,
 }) {
   return (
     <div className={css.petsaround_cards__container}>
@@ -22,6 +24,20 @@ export function PetCard({
           <a onClick={onClick} className={css.pet__card_link}>
             {buttonName}
           </a>
+          <button
+            onClick={handleClick}
+            style={{
+              padding: "5px 10px",
+              color: "white",
+              fontFamily: "Poppins",
+              borderRadius: 10,
+              border: "5px solid var(--naranja-rojizo)",
+              backgroundColor: "var(--naranja)",
+              display: `${displayDeleteButton}`,
+            }}
+          >
+            Eliminar
+          </button>
         </div>
       </div>
     </div>

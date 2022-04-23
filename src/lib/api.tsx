@@ -53,7 +53,7 @@ export async function editMyInfo(fullName, password, { token }) {
   return resEditMyInfo;
 }
 
-export async function createPetLost(data, token) {
+export async function createPetLost(data, { token }) {
   const createPetLostRes = await fetch(API_BASE_URL + "/pet/lost", {
     method: "post",
     headers: {
@@ -79,24 +79,24 @@ export async function getMyPets({ token }) {
   return resMyPets;
 }
 
-// export async function editPetReport(id, data) {
-//   const editPetReport = await fetch(API_BASE_URL + "/pets/edit/" + id, {
-//     method: "put",
-//     headers: {
-//       "content-type": "application/json",
-//       authorization: "bearer " + currentState.user.token,
-//     },
-//     body: JSON.stringify(data),
-//   });
+export async function editPetReport(id, data, { token }) {
+  const editPetReport = await fetch(API_BASE_URL + "/pets/edit/" + id, {
+    method: "put",
+    headers: {
+      "content-type": "application/json",
+      authorization: "bearer " + token,
+    },
+    body: JSON.stringify(data),
+  });
 
-// const resEditPetReport = await editPetReport.json();
+  const resEditPetReport = await editPetReport.json();
 
-//   if (resEditPetReport == true) {
-//     window.alert("Su mascota fue modificada");
-//   } else {
-//     window.alert("No pudimos modificar su mascota");
-//   }
-// }
+  if (resEditPetReport == true) {
+    window.alert("Su mascota fue modificada");
+  } else {
+    window.alert("No pudimos modificar su mascota");
+  }
+}
 
 export async function petsAround(geoloc) {
   const { userLat, userLng } = geoloc;
@@ -112,20 +112,19 @@ export async function authUser(email: string) {
   return resAuth;
 }
 
-// export async function deletePetReport(petId) {
-//   const currentState = state.getState();
+export async function deletePetReport(petId, { token }) {
+  const deletPetRes = await fetch(API_BASE_URL + "/pet/delete", {
+    method: "delete",
+    headers: {
+      "content-type": "application/json",
+      authorization: "bearer " + token,
+    },
+    body: JSON.stringify(petId),
+  });
+  const resDeletPet = await deletPetRes;
+  return resDeletPet;
+}
 
-//   const deletPetRes = await fetch(API_BASE_URL + "/pet/delete", {
-//     method: "delete",
-//     headers: {
-//       "content-type": "application/json",
-//       authorization: "bearer " + currentState.user.token,
-//     },
-//     body: JSON.stringify(petId),
-//   });
-//   const resDeletPet = await deletPetRes;
-//   return resDeletPet;
-// }
 export async function sendReport(data) {
   const sendReportRes = await fetch(API_BASE_URL + "/pet/report", {
     method: "post",

@@ -1,8 +1,14 @@
 import { useEffect } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import {
+  useRecoilValue,
+  useSetRecoilState,
+  useRecoilState,
+  RecoilState,
+  atom,
+} from "recoil";
 import { authUser, userDataAtom, userFullnameAtom } from "./atoms";
 
-export function useTokenState(token: string) {
+export function useTokenState(token) {
   const setTokenState = useSetRecoilState(authUser);
   useEffect(() => {
     setTokenState(token);
@@ -34,3 +40,15 @@ export function useFullname(fullname) {
 export function fullnameData() {
   return useRecoilValue(userFullnameAtom);
 }
+
+export const useMapboxAtom = () => useRecoilState(mapboxAtom);
+export const useMapboxAtomValue = () => useRecoilValue(mapboxAtom);
+export const useSetMapboxAtom = () => useSetRecoilState(mapboxAtom);
+const mapboxAtom: RecoilState<{ [key: string]: any }> = atom({
+  key: "mapbox",
+  default: {
+    mapLat: null,
+    mapLng: null,
+    mapUbication: null,
+  },
+});
