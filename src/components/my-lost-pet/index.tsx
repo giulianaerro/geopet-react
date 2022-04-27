@@ -11,7 +11,8 @@ export const MyLostPetComponent = () => {
   const auth = hasAuth();
   const navigate = useNavigate();
 
-  const [myLostPets, setmyLostPets] = useState(null);
+  const [myLostPets, setmyLostPets] = useState([]);
+  console.log(myLostPets);
   const [editMyPet, setEditMyPet] = useState(null);
 
   const getMyLostPets = async () => {
@@ -26,7 +27,6 @@ export const MyLostPetComponent = () => {
   }, [auth]);
 
   const handleClickDetelePet = (petId) => {
-    console.log(petId.id);
     deletePetReport({ id: petId.id }, auth).then(() => {
       navigate("/");
     });
@@ -37,7 +37,11 @@ export const MyLostPetComponent = () => {
   ) : myLostPets ? (
     <div className={css.root}>
       <div className={css.container__text}>
-        <TextTitle>Mis mascotas publicadas</TextTitle>
+        <TextTitle>
+          {myLostPets.length == 0
+            ? "No publicaste mascotas"
+            : "Mis mascotas publicadas"}
+        </TextTitle>
       </div>
 
       {myLostPets.map((p, i) => (
@@ -53,9 +57,5 @@ export const MyLostPetComponent = () => {
         ></PetCard>
       ))}
     </div>
-  ) : (
-    <div className={css.container__text}>
-      <TextTitle>No publicaste mascotas</TextTitle>
-    </div>
-  );
+  ) : null;
 };

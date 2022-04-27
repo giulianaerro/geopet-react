@@ -13,7 +13,7 @@ export function MapboxSeach() {
   const setDataMap = useSetMapboxAtom();
   const [query, setQuery] = useState("");
 
-  const initialCoords: any = [-64.183, -31.417];
+  const initialCoords: any = [-64.16, -36.37];
   const [coords, setCoords] = useState(initialCoords);
 
   async function search() {
@@ -43,7 +43,7 @@ export function MapboxSeach() {
           width: "370px",
           marginBottom: 23,
         }}
-        zoom={[10]}
+        zoom={[8]}
         center={coords}
       ></Map>
 

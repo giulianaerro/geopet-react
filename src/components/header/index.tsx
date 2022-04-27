@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import css from "./index.css";
 import { Button } from "../../ui/buttons";
 import { MenuHamburger } from "../../ui/menu-hamburger";
-import { hasAuth, useTokenState } from "../../hooks";
+import { hasAuth } from "../../hooks";
 import geopet from "../../assets/geopet.png";
 
 export const Header = () => {
   const auth = hasAuth();
-  const [token, setToken] = useState({});
 
   const handleClick = () => {
     localStorage.removeItem("recoil-persist");

@@ -78,3 +78,8 @@
     margin: 50px;
   }
 }
+
+.container__buttons {
+  display: flex;
+flex-direction: column;
+}

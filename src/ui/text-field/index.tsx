@@ -22,12 +22,17 @@ export function TextField({
   );
 }
 
-export function TextArea({ name = null, label = null }) {
+export function TextArea({ name = null, label = null, defaultValue = null }) {
   return (
     <div>
       <label className={css.label}>{label}</label>
       <br />
-      <textarea className={css.textarea} name={name} required />
+      <textarea
+        className={css.textarea}
+        name={name}
+        defaultValue={defaultValue}
+        required
+      />
     </div>
   );
 }

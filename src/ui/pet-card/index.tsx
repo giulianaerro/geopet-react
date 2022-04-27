@@ -22,27 +22,27 @@ export function PetCard({
         <div className={css.pet__card_content}>
           <h3 className={css.pet__card_title}>{petName}</h3>
           <p className={css.pet__card_text}>{bio}</p>
-          <a onClick={onClick} className={css.pet__card_link}>
-            {buttonName}
-          </a>
-          {petPublic ? (
-            <button
-              onClick={handleClick}
-              style={{
-                padding: "5px 10px",
-                color: "white",
-                fontFamily: "Poppins",
-                borderRadius: 10,
-                border: "5px solid var(--naranja-rojizo)",
-                backgroundColor: "var(--naranja)",
-                display: `${displayDeleteButton}`,
-              }}
-            >
-              Eliminar
-            </button>
-          ) : (
-            ""
-          )}
+          <div className={css.container__buttons}>
+            <a onClick={onClick} className={css.pet__card_link}>
+              {buttonName}
+            </a>
+            {petPublic ? (
+              <a
+                onClick={handleClick}
+                style={{
+                  textAlign: "right",
+                  color: "var(--celeste)",
+                  marginTop: "10px",
+                  fontSize: "18px",
+                  display: `${displayDeleteButton}`,
+                }}
+              >
+                Eliminar
+              </a>
+            ) : (
+              ""
+            )}
+          </div>
         </div>
       </div>
     </div>

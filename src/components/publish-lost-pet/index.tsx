@@ -94,10 +94,15 @@ export const PublishLostPetComponent = ({ petValueData = null }) => {
             type={"name"}
             name={"petName"}
             label={"NOMBRE DE LA MASCOTA"}
+            defaultValue={petValueData ? petValueData.petName : ""}
           ></TextField>
         </div>
         <div className={css.container__input}>
-          <TextArea name={"bio"} label={"BIO"}></TextArea>
+          <TextArea
+            name={"bio"}
+            label={"BIO"}
+            defaultValue={petValueData ? petValueData.bio : ""}
+          ></TextArea>
         </div>
 
         <div className={css.container__dropzone}>
