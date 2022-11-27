@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://geopet.herokuapp.com";
+const API_BASE_URL = "https://geopet.onrender.com";
 
 export async function signIn(email: string, password: string) {
   const signInRes = await fetch(API_BASE_URL + "/auth/token", {
